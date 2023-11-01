@@ -1,8 +1,6 @@
-import { Request, Response, Router } from 'express';
+import { Express } from 'express';
+import userRoutes from './user.route';
 
-const router = Router();
-
-router.get('/route1', (req: Request, res: Response) => {
-});
-
-export default router;
+export function setupRoutes(app: Express) {
+  app.use('/api', userRoutes);
+}

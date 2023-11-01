@@ -6,7 +6,8 @@ import requestIp from 'request-ip';
 import dotenv from 'dotenv';
 
 import { Request, Response, NextFunction } from 'express';
-import indexRoute from './app/routes/index.route';
+// import indexRoute from './app/routes/index.route';
+import { setupRoutes } from './app/routes/index.route';
 
 dotenv.config();
 const port = parseInt(process.env.PORT || '3000', 10);
@@ -39,7 +40,7 @@ app.use(
   })
 );
 
-app.use(indexRoute)
+setupRoutes(app);
 
 app.listen(port, () => {
   console.log(`Hi Bro! We are running in ${base_url}:${port}`);

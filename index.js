@@ -9,7 +9,8 @@ const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 const request_ip_1 = __importDefault(require("request-ip"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const index_route_1 = __importDefault(require("./app/routes/index.route"));
+// import indexRoute from './app/routes/index.route';
+const index_route_1 = require("./app/routes/index.route");
 dotenv_1.default.config();
 const port = parseInt(process.env.PORT || '3000', 10);
 const base_url = process.env.BASE_URL || 'http://localhost';
@@ -33,7 +34,7 @@ app.use((0, cors_1.default)({
     origin: true,
     credentials: true,
 }));
-app.use(index_route_1.default);
+(0, index_route_1.setupRoutes)(app);
 app.listen(port, () => {
     console.log(`Hi Bro! We are running in ${base_url}:${port}`);
 });
